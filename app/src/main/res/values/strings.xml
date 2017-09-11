@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">WG-APP</string>
+    <string name="appName">WG-APP</string>
+    <string name="loginUsername">Username</string>
+    <string name="loginPassword">Password</string>
+    <string name="buttonLogin">Login</string>
+    <string name="buttonCancel">Cancel</string>
+    <string name="loginSave">Save Credentials</string>
+    <string name="buttonPurchase">Purchase</string>
+    <string name="buttonStatementOfCosts">statement of costs</string>
+    <string name="buttonUsers">Users</string>
+    <string name="titleMenueBar">Menü</string>
+    <string name="buttonAddPurchase">Add Purchase</string>
+    <string name="titlePurchases">Purchases</string>
+    <string name="buttonAddUser">Add user</string>
+    <string name="titleUsers">Users</string>
+    <string name="textYouOwePerson">You owe the following person money:</string>
+    <string name="textPersonOwesYou">The following person owe you money:</string>
+    <string name="buttonEditUser">Add User</string>
+    <string name="textViewEditUserPassword">Please enter a password for the user</string>
+    <string name="loginPasswordConfirm">Confirm Password</string>
+    <string name="textViewEditUserUsername">Please enter the Username:</string>
+    <string name="buttonSavePurchase">Save Purchase</string>
+    <string name="buttonAddItem">Add Item</string>
+    <string name="buttonAddItemSave">Save Items</string>
+    <string name="itemAmount">Amount</string>
+    <string name="itemDescription">Description</string>
+</resources>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#cccccc"
+    tools:context="ch.teko.michael.wgapp.MenuActivity"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/buttonPurchase"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableBottom="@drawable/icshopping"
+        android:text="@string/buttonPurchase"
+        android:background="#FFFFFF"
+        android:height="130dp"
+        android:paddingBottom="10dp"
+        android:paddingTop="5dp"/>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:visibility="visible" />
+
+    <Button
+        android:id="@+id/buttonStatementOfCosts"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:height="130dp"
+        android:background="#FFFFFF"
+        android:drawableBottom="@drawable/icmoney"
+        android:paddingBottom="10dp"
+        android:paddingTop="5dp"
+        android:text="@string/buttonStatementOfCosts" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:visibility="visible" />
+
+    <Button
+        android:id="@+id/buttonUsers"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableBottom="@drawable/icsetting"
+        android:text="@string/buttonUsers"
+        android:background="#FFFFFF"
+        android:height="130dp"
+        android:paddingBottom="10dp"
+        android:paddingTop="5dp"/>
+
+</LinearLayout>
