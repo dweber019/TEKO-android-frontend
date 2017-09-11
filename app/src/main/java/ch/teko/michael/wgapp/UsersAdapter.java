@@ -10,46 +10,39 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.List;
 
-import ch.teko.michael.wgapp.model.Purchase;
+import ch.teko.michael.wgapp.model.User;
 
 public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.MyViewHolder> {
 
 
-    private ImageView imageViewPurchaseDelete;
-    private List<Purchase> purchaseList;
+    private List<User> userList;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView textViewPurchase;
-        public ImageView imageViewDeletePurchase;
+        public TextView textViewUsername;
+        public ImageView imageViewDeleteUser;
 
         public MyViewHolder(View view) {
             super(view);
-            textViewPurchase = (TextView) view.findViewById(R.id.textviewPurchaseSingleRow);
-            imageViewDeletePurchase = (ImageView) view.findViewById(R.id.imageViewPurchaseSingleRowDelete);
-
-
+            textViewUsername = (TextView) view.findViewById(R.id.textviewUsernameSingleRow);
+            imageViewDeleteUser = (ImageView) view.findViewById(R.id.imageViewUserSingleRowDelete);
 
 
         }
     }
 
-
-    public UsersAdapter(List<Purchase> purchaseList) {
-        this.purchaseList = purchaseList;
+    public UsersAdapter(List<User> userList) {
+        this.userList = userList;
     }
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.purchase_single_row, parent, false);
+                .inflate(R.layout.user_single_row, parent, false);
 
         return new MyViewHolder(itemView);
     }
@@ -58,20 +51,20 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.MyViewHolder
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, final int position) {
-        final Purchase items = purchaseList.get(position);
-        holder.textViewPurchase.setText(items.purchaseDate);
-        holder.imageViewDeletePurchase.setOnClickListener(new View.OnClickListener() {
+        final User users = userList.get(position);
+        holder.textViewUsername.setText(users.getUsername());
+        holder.imageViewDeleteUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d("Test",items.purchaseDate);
+                Log.d("Test",users.getUsername());
 
             }
         });
 
-        holder.textViewPurchase.setOnClickListener(new View.OnClickListener() {
+        holder.textViewUsername.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d("Test",items.purchaseDate);
+                Log.d("Test",users.getUsername());
             }
         });
 
@@ -80,6 +73,6 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.MyViewHolder
 
     @Override
     public int getItemCount() {
-        return purchaseList.size();
+        return userList.size();
     }
 }
