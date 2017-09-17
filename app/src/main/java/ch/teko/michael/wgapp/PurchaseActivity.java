@@ -1,6 +1,7 @@
 package ch.teko.michael.wgapp;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
@@ -10,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -41,12 +43,18 @@ public class PurchaseActivity extends AppCompatActivity {
         getSupportActionBar().show();
         setTitle(R.string.titlePurchases);
 
+        final Context context = getApplicationContext();
 
         purchaseList = new ArrayList<>();
 
         purchaseList.add(new Purchase("Test"));
         purchaseList.add(new Purchase("Test2"));
         purchaseList.add(new Purchase("Test2222222222"));
+
+        // Get all slips
+        RequestHelper.getAll(context, "/slips", (jsonArray -> {
+            Log.i("slips", jsonArray.toString());
+        }));
 
 
         recyclerView = (RecyclerView) findViewById(R.id.recyclerviewPurchases);
