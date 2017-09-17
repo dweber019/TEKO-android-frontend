@@ -2,7 +2,6 @@ package ch.teko.michael.wgapp;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v4.media.session.MediaSessionCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,6 +11,9 @@ import android.widget.EditText;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import ch.teko.michael.wgapp.api.RequestHelper;
+import ch.teko.michael.wgapp.api.TokenHelper;
 
 public class LoginActivity extends AppCompatActivity {
 

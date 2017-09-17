@@ -1,4 +1,4 @@
-package ch.teko.michael.wgapp;
+package ch.teko.michael.wgapp.api;
 
 import org.json.JSONArray;
 
