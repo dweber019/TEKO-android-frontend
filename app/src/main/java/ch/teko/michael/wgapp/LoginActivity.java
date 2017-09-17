@@ -60,29 +60,6 @@ buttonLogin.setOnClickListener(
 
 
 
-                Map<String, String> params = new HashMap<>();
-                params.put(KEY_USERNAME,username);//put your parameters here
-                params.put(KEY_PASSWORD,password);
-
-                Custom_Volly_Request jsObjRequest = new Custom_Volly_Request(
-                        Request.Method.POST, LOGIN_URL, params,
-                        new Response.Listener<JSONObject>() {
-                            @Override
-                            public void onResponse(JSONObject response) {
-                                Log.d("Response: ", response.toString());
-                            }
-                        },
-                        new Response.ErrorListener() {
-                            @Override
-                            public void onErrorResponse(VolleyError response)
-                            {
-                                Log.d("Response: Error", response.toString());
-                            }
-                        }
-                );
-
-
-
 
             }
         }
