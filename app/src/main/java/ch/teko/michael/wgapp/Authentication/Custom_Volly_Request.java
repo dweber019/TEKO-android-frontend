@@ -1,4 +1,4 @@
-package ch.teko.michael.wgapp;
+package ch.teko.michael.wgapp.Authentication;
 
 import com.android.volley.NetworkResponse;
 import com.android.volley.ParseError;
