@@ -45,24 +45,18 @@ public class StatementofcostsActivity extends AppCompatActivity {
         context = getApplicationContext();
 
         settleList = new ArrayList<>();
-        settleList.add(new Settle(0, new User(1, "David", "b"), new User(2, "Michael", "m"), "10.10.2017" , false, 12.19));
 
         //List Person Owes You
-
         recyclerViewPersonOwesYou = (RecyclerView) findViewById(R.id.recyclerviewStatementofcostPersonOwesYou);
-        statementofcostsPersonOwesYouAdapter = new StatementofcostsAdapter(settleList, context);
+        statementofcostsPersonOwesYouAdapter = new StatementofcostsAdapter(settleList, context, true);
         RecyclerView.LayoutManager statementofcostsPersonOwesYouManager = new LinearLayoutManager(getApplicationContext());
         recyclerViewPersonOwesYou.setLayoutManager(statementofcostsPersonOwesYouManager);
         recyclerViewPersonOwesYou.setItemAnimator(new DefaultItemAnimator());
         recyclerViewPersonOwesYou.setAdapter(statementofcostsPersonOwesYouAdapter);
 
-
-
-
         //List You Owes Person
-
         recyclerViewYouOwesPerson = (RecyclerView) findViewById(R.id.recyclerviewStatementofcostYouOwesPerson);
-        statementofcostsYouOwesPersonAdapter = new StatementofcostsAdapter(settleList, context);
+        statementofcostsYouOwesPersonAdapter = new StatementofcostsAdapter(settleList, context, false);
         RecyclerView.LayoutManager statementofcostsYouOwesPersonManager = new LinearLayoutManager(getApplicationContext());
         recyclerViewYouOwesPerson.setLayoutManager(statementofcostsYouOwesPersonManager);
         recyclerViewYouOwesPerson.setItemAnimator(new DefaultItemAnimator());
@@ -71,17 +65,10 @@ public class StatementofcostsActivity extends AppCompatActivity {
 
     @Override
     protected void onResume() {
-        this.loadSettles();
+        this.statementofcostsPersonOwesYouAdapter.reloadData();
+        this.statementofcostsYouOwesPersonAdapter.reloadData();
 
         super.onResume();
-    }
-
-    private void loadSettles() {
-        RequestHelper.getAll(context, "/settles", (jsonArray -> {
-            Log.i("settles", jsonArray.toString());
-
-            settelsList = Settle.fromArray(jsonArray);
-        }));
     }
 
 }
