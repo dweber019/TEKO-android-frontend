@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import java.util.List;
 
+import ch.teko.michael.wgapp.api.RequestHelper;
 import ch.teko.michael.wgapp.model.Purchase;
 
 public class PurchaseAdapter extends RecyclerView.Adapter<PurchaseAdapter.MyViewHolder> {
@@ -25,6 +26,7 @@ public class PurchaseAdapter extends RecyclerView.Adapter<PurchaseAdapter.MyView
 
     private ImageView imageViewPurchaseDelete;
     private List<Purchase> purchaseList;
+    private Context context;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView textViewPurchase;
@@ -34,16 +36,22 @@ public class PurchaseAdapter extends RecyclerView.Adapter<PurchaseAdapter.MyView
             super(view);
             textViewPurchase = (TextView) view.findViewById(R.id.textviewPurchaseSingleRow);
             imageViewDeletePurchase = (ImageView) view.findViewById(R.id.imageViewPurchaseSingleRowDelete);
-
-
-
-
         }
     }
 
 
-    public PurchaseAdapter(List<Purchase> purchaseList) {
+    public PurchaseAdapter(List<Purchase> purchaseList, Context context) {
         this.purchaseList = purchaseList;
+        this.context = context;
+    }
+
+    public void reloadData() {
+        // Get all slips
+        RequestHelper.getAll(context, "/slips", (jsonArray -> {
+            Log.i("slips", jsonArray.toString());
+
+            this.swapData(Purchase.fromArray(jsonArray));
+        }));
     }
 
     public void swapData(List<Purchase> purchaseList) {
@@ -59,8 +67,6 @@ public class PurchaseAdapter extends RecyclerView.Adapter<PurchaseAdapter.MyView
         return new MyViewHolder(itemView);
     }
 
-  Context context;
-
     @Override
     public void onBindViewHolder(MyViewHolder holder, final int position) {
         final Purchase items = purchaseList.get(position);
@@ -70,13 +76,18 @@ public class PurchaseAdapter extends RecyclerView.Adapter<PurchaseAdapter.MyView
             public void onClick(View view) {
                 Log.d("Test","Delete Button "+ items.date);
 
+                RequestHelper.delete(context, "/slips/" + items.id, (jsonArray -> {
+                    Log.i("slips", jsonArray.toString());
+
+                    reloadData();
+                }));
             }
         });
 
         holder.textViewPurchase.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d("Test","Item " + items.date);
+                Log.d("Test","Item " + items.id);
             }
         });
 
