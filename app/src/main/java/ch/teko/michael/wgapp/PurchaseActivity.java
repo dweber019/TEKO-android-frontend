@@ -11,6 +11,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,6 +30,7 @@ public class PurchaseActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private PurchaseAdapter purchaseAdapter;
     private List<Purchase> purchaseList;
+    private Context context;
 
 
     @Override
@@ -37,7 +41,7 @@ public class PurchaseActivity extends AppCompatActivity {
         getSupportActionBar().show();
         setTitle(R.string.titlePurchases);
 
-        final Context context = getApplicationContext();
+        context = getApplicationContext();
 
         purchaseList = new ArrayList<>();
 
@@ -49,13 +53,7 @@ public class PurchaseActivity extends AppCompatActivity {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(purchaseAdapter);
 
-        // Get all slips
-        RequestHelper.getAll(context, "/slips", (jsonArray -> {
-            Log.i("slips", jsonArray.toString());
-
-            purchaseAdapter.swapData(Purchase.fromArray(jsonArray));
-        }));
-
+        this.loadSlips();
 
         addPurchase = (Button) findViewById(R.id.buttonAddPurchase);
 
@@ -63,15 +61,30 @@ public class PurchaseActivity extends AppCompatActivity {
                 new View.OnClickListener(){
                     public void onClick(View v) {
 
-                        Intent i = new Intent(getBaseContext(), PurchaseDetailActivity.class);
-                        startActivity(i);
+                        RequestHelper.post(context, "/slips", null, jsonObject -> {
+                            Log.i("slips", jsonObject.toString());
+
+                            loadSlips();
+
+                            Purchase p = Purchase.fromObject(jsonObject);
+
+                            Intent i = new Intent(getBaseContext(), PurchaseDetailActivity.class);
+                            i.putExtra("ID", p.id);
+                            startActivity(i);
+                        });
 
                     }
                 }
         );
+    }
 
+    private void loadSlips() {
+        // Get all slips
+        RequestHelper.getAll(context, "/slips", (jsonArray -> {
+            Log.i("slips", jsonArray.toString());
 
-
+            purchaseAdapter.swapData(Purchase.fromArray(jsonArray));
+        }));
     }
 
 
