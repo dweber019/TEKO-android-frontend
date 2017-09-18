@@ -26,12 +26,13 @@ public class PurchaseDetailAdapter extends RecyclerView.Adapter<PurchaseDetailAd
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView textViewPurchaseItem;
         public ImageView imageViewDeletePurchaseItem;
+        public TextView textViewPurchaseItemDescription;
 
         public MyViewHolder(View view) {
             super(view);
             textViewPurchaseItem = (TextView) view.findViewById(R.id.textviewPurchaseDetailSingleRow);
             imageViewDeletePurchaseItem = (ImageView) view.findViewById(R.id.imageViewPurchaseDetailSingleRowDelete);
-
+            textViewPurchaseItemDescription = (TextView) view.findViewById(R.id.textviewPurchaseDetailDescriptionSingleRow);
 
 
 
@@ -57,6 +58,7 @@ public class PurchaseDetailAdapter extends RecyclerView.Adapter<PurchaseDetailAd
     public void onBindViewHolder(MyViewHolder holder, final int position) {
         final PurchaseItem items = purchaseItemList.get(position);
         holder.textViewPurchaseItem.setText(items.getItemName());
+        holder.textViewPurchaseItemDescription.setText("Description");
         holder.imageViewDeletePurchaseItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
