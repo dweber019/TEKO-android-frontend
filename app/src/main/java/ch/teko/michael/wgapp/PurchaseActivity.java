@@ -53,8 +53,6 @@ public class PurchaseActivity extends AppCompatActivity {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(purchaseAdapter);
 
-        this.loadSlips();
-
         addPurchase = (Button) findViewById(R.id.buttonAddPurchase);
 
         addPurchase.setOnClickListener(
@@ -76,6 +74,13 @@ public class PurchaseActivity extends AppCompatActivity {
                     }
                 }
         );
+    }
+
+    @Override
+    protected void onResume() {
+        this.loadSlips();
+
+        super.onResume();
     }
 
     private void loadSlips() {
