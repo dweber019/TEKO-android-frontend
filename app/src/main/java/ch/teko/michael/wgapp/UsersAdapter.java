@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import ch.teko.michael.wgapp.model.Purchase;
 import ch.teko.michael.wgapp.model.User;
 
 public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.MyViewHolder> {
@@ -69,6 +70,11 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.MyViewHolder
         });
 
 
+    }
+
+    public void swapData(List<User> userList) {
+        this.userList = userList;
+        notifyDataSetChanged();
     }
 
     @Override
