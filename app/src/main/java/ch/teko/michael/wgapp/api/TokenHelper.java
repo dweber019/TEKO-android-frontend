@@ -25,6 +25,13 @@ public class TokenHelper {
         return sharedPref.getString(TokenHelper.token, "");
     }
 
+    public static void removeToken(Context context) {
+        SharedPreferences sharedPref = context.getSharedPreferences(TokenHelper.token, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.remove(TokenHelper.token);
+        editor.commit();
+    }
+
     public static boolean isTokenValid(Context context) {
         SharedPreferences sharedPref = context.getSharedPreferences(TokenHelper.token, Context.MODE_PRIVATE);
         String token = sharedPref.getString(TokenHelper.token, "");

@@ -9,6 +9,7 @@
     <string name="buttonPurchase">Purchase</string>
     <string name="buttonStatementOfCosts">statement of costs</string>
     <string name="buttonUsers">Users</string>
+    <string name="buttonLogout">Abmelden</string>
     <string name="titleMenueBar">Menü</string>
     <string name="buttonAddPurchase">Add Purchase</string>
     <string name="titlePurchases">Purchases</string>
