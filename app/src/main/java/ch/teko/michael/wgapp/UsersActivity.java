@@ -43,26 +43,21 @@ public class UsersActivity extends AppCompatActivity{
 
         final Context context = getApplicationContext();
 
-        // Get all Users
-        RequestHelper.getAll(context, "/users", (jsonArray -> {
-            Log.i("users", jsonArray.toString());
-        }));
-
-
-
-
         userList = new ArrayList<>();
-        userList.add(new User("michael.faller@ch.dsv.com",0,"Michael Faller"));
-
-
 
         recyclerView = (RecyclerView) findViewById(R.id.recyclerviewUsers);
-
         usersAdapter = new UsersAdapter(userList);
         RecyclerView.LayoutManager purchaseLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(purchaseLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(usersAdapter);
+
+        //Get users
+        RequestHelper.getAll(context, "/users", (jsonArray -> {
+            Log.i("users", jsonArray.toString());
+
+            usersAdapter.swapData(User.fromArray(jsonArray));
+        }));
 
 
 
