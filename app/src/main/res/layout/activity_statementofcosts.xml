@@ -10,11 +10,11 @@
         android:text="@string/textPersonOwesYou"
         android:layout_marginTop="10dp"/>
 
-    <ListView
-        android:id="@+id/listviewPersonOwesYou"
+    <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minHeight="20dp"/>
+        android:layout_height="150dp"
+        android:id="@+id/recyclerviewStatementofcostPersonOwesYou"
+        android:layout_marginTop="10dp"/>>
 
     <TextView
         android:id="@+id/textviewYouOwePerson"
@@ -23,9 +23,9 @@
         android:layout_marginTop="30dp"
         android:text="@string/textYouOwePerson" />
 
-    <ListView
-        android:id="@+id/listviewYouOwePerson"
+    <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minHeight="20dp"/>
+        android:layout_height="150dp"
+        android:id="@+id/recyclerviewStatementofcostYouOwesPerson"
+        android:layout_marginTop="10dp"/>
 </LinearLayout>
