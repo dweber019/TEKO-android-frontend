@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">WG-APP</string>
     <string name="appName">WG-APP</string>
-    <string name="loginUsername">Username</string>
+    <string name="loginUsername">Email</string>
     <string name="loginPassword">Password</string>
     <string name="buttonLogin">Login</string>
     <string name="buttonCancel">Cancel</string>
