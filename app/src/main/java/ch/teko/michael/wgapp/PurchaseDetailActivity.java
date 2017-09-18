@@ -77,11 +77,9 @@ public class PurchaseDetailActivity extends AppCompatActivity {
         buttonClosePurchase.setOnClickListener(
                 new View.OnClickListener() {
                     public void onClick(View v) {
-
                         Intent i = new Intent(getBaseContext(), PurchaseCloseActivity.class);
+                        i.putExtra("ID", purchaseId);
                         startActivity(i);
-
-
                     }
                 }
 
