@@ -66,6 +66,7 @@ public class PurchaseDetailActivity extends AppCompatActivity {
                     public void onClick(View v) {
 
                         Intent i = new Intent(getBaseContext(), PurchaseAddItem.class);
+                        i.putExtra("ID", purchaseId);
                         startActivity(i);
 
                     }

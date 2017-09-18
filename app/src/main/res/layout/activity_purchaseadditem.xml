@@ -7,29 +7,38 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:layout_marginTop="100dp"
         android:layout_marginLeft="5dp"
 
         >
 
         <TextView
+            android:id="@+id/textViewItemSelection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/selectItemDescription" />
+
+        <Spinner
+            android:id="@+id/spinnerItemSelection"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:background="@android:drawable/btn_dropdown"
+            android:spinnerMode="dropdown" />
+
+
+        <TextView
             android:id="@+id/textViewItemDescription"
             android:layout_width="220dp"
             android:layout_height="match_parent"
-            android:text="@string/itemDescription" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
+            android:text="@string/itemDescription"
+            android:layout_marginTop="20dp"/>
 
         <EditText
             android:id="@+id/editTextItemDescription"
             android:layout_width="220dp"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
     </LinearLayout>
 
     <LinearLayout

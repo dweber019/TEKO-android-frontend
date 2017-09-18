@@ -29,14 +29,15 @@ public class PurchaseDetailAdapter extends RecyclerView.Adapter<PurchaseDetailAd
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView textViewPurchaseItem;
         public ImageView imageViewDeletePurchaseItem;
+        public TextView textViewPurchaseItemDescription;
 
         public MyViewHolder(View view) {
             super(view);
             textViewPurchaseItem = (TextView) view.findViewById(R.id.textviewPurchaseDetailSingleRow);
             imageViewDeletePurchaseItem = (ImageView) view.findViewById(R.id.imageViewPurchaseDetailSingleRowDelete);
+            textViewPurchaseItemDescription = (TextView) view.findViewById(R.id.textviewPurchaseDetailDescriptionSingleRow);
         }
     }
-
 
     public PurchaseDetailAdapter(List<PurchaseItem> purchaseItemList, Context context, Integer purchaseId) {
         this.purchaseItemList = purchaseItemList;
@@ -69,7 +70,10 @@ public class PurchaseDetailAdapter extends RecyclerView.Adapter<PurchaseDetailAd
     @Override
     public void onBindViewHolder(MyViewHolder holder, final int position) {
         final PurchaseItem items = purchaseItemList.get(position);
+
         holder.textViewPurchaseItem.setText(items.name);
+        holder.textViewPurchaseItemDescription.setText(items.description);
+
         holder.imageViewDeletePurchaseItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -83,15 +87,6 @@ public class PurchaseDetailAdapter extends RecyclerView.Adapter<PurchaseDetailAd
 
             }
         });
-
-        holder.textViewPurchaseItem.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Log.d("Test","Item " + items.name);
-            }
-        });
-
-
     }
 
     @Override
