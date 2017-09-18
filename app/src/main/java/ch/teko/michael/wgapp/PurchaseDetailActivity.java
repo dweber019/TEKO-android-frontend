@@ -88,6 +88,13 @@ public class PurchaseDetailActivity extends AppCompatActivity {
         );
     }
 
+    @Override
+    protected void onResume() {
+        this.loadSlipItems();
+
+        super.onResume();
+    }
+
     private void loadSlipItems() {
         // Get all slips
         RequestHelper.getAll(context, "/slips/" + purchaseId + "/items", (jsonArray -> {
