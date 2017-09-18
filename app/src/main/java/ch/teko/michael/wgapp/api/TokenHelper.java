@@ -36,4 +36,15 @@ public class TokenHelper {
         return !jwt.isExpired(10);
     }
 
+    public static Integer getSub(Context context) {
+        SharedPreferences sharedPref = context.getSharedPreferences(TokenHelper.token, Context.MODE_PRIVATE);
+        String token = sharedPref.getString(TokenHelper.token, "");
+        if (token == "") {
+            return 0;
+        }
+
+        JWT jwt = new JWT(token);
+        return Integer.parseInt(jwt.getSubject());
+    }
+
 }
