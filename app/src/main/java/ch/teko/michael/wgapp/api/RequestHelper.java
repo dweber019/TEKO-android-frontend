@@ -26,6 +26,8 @@ public class RequestHelper {
 
     private static String baseURL = "https://wg-app.scapp.io/api";
 
+    private static RequestQueue queue;
+
     public static void get(Context context, String uri, JsonObjectOperator operator) {
         RequestHelper.request(context, uri, null, operator, Request.Method.GET, true);
     }
@@ -52,7 +54,9 @@ public class RequestHelper {
 
     private static void request(Context context, String uri, JSONObject json, JsonObjectOperator operator, Integer method, Boolean withToken) {
 
-        final RequestQueue queue = Volley.newRequestQueue(context);
+        if (RequestHelper.queue == null) {
+            RequestHelper.queue = Volley.newRequestQueue(context);
+        }
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(method, RequestHelper.baseURL + uri, json, new Response.Listener<JSONObject>() {
             @Override
@@ -86,13 +90,15 @@ public class RequestHelper {
             }
         };
         // Add the request to the RequestQueue.
-        queue.add(jsonObjectRequest);
+        RequestHelper.queue.add(jsonObjectRequest);
 
     }
 
     private static void requestAll(Context context, String uri, JSONArray json, JsonArrayOperator operator, Integer method, Boolean withToken) {
 
-        final RequestQueue queue = Volley.newRequestQueue(context);
+        if (RequestHelper.queue == null) {
+            RequestHelper.queue = Volley.newRequestQueue(context);
+        }
 
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(method, RequestHelper.baseURL + uri, json, new Response.Listener<JSONArray>() {
             @Override
@@ -126,7 +132,7 @@ public class RequestHelper {
             }
         };
         // Add the request to the RequestQueue.
-        queue.add(jsonArrayRequest);
+        RequestHelper.queue.add(jsonArrayRequest);
 
     }
 

@@ -43,7 +43,7 @@ public class PurchaseActivity extends AppCompatActivity {
 
         recyclerView = (RecyclerView) findViewById(R.id.recyclerviewPurchases);
 
-        purchaseAdapter = new PurchaseAdapter(purchaseList);
+        purchaseAdapter = new PurchaseAdapter(purchaseList, context);
         RecyclerView.LayoutManager purchaseLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(purchaseLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
