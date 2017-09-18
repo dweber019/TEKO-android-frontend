@@ -3,6 +3,7 @@ package ch.teko.michael.wgapp;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
@@ -16,6 +17,8 @@ public class PurchaseAddItem extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_purchaseadditem);
 
+
+        
 
 
         //get the spinner from the xml.
