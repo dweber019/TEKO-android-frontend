@@ -4,6 +4,7 @@
     android:layout_height="match_parent">
 
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -14,10 +15,10 @@
         >
 
         <TextView
-            android:id="@+id/textViewItemDescription"
+            android:id="@+id/textViewClosePurchase"
             android:layout_width="220dp"
             android:layout_height="match_parent"
-            android:text="@string/itemDescription" />
+            android:text="@string/closePurchaseCost" />
     </LinearLayout>
 
     <LinearLayout
@@ -27,7 +28,7 @@
 
 
         <EditText
-            android:id="@+id/editTextItemDescription"
+            android:id="@+id/editTextPurchaseCost"
             android:layout_width="220dp"
             android:layout_height="wrap_content" />
     </LinearLayout>
@@ -39,11 +40,12 @@
         android:gravity="bottom">
 
         <Button
-            android:id="@+id/buttonAddItemSave"
+            android:id="@+id/buttonClosePurchase"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/buttonAddItemSave"
+            android:text="@string/buttonClosePurchase"
             android:background="#67ab9f"/>
     </LinearLayout>
+
 
 </LinearLayout>

@@ -59,11 +59,11 @@ public class PurchaseAdapter extends RecyclerView.Adapter<PurchaseAdapter.MyView
     @Override
     public void onBindViewHolder(MyViewHolder holder, final int position) {
         final Purchase items = purchaseList.get(position);
-        holder.textViewPurchase.setText(items.purchaseDate);
+        holder.textViewPurchase.setText(items.date);
         holder.imageViewDeletePurchase.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d("Test","Item"+ items.purchaseDate);
+                Log.d("Test","Delete Button "+ items.date);
 
             }
         });
@@ -71,7 +71,7 @@ public class PurchaseAdapter extends RecyclerView.Adapter<PurchaseAdapter.MyView
         holder.textViewPurchase.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d("Test","Button" + items.purchaseDate);
+                Log.d("Test","Item " + items.date);
             }
         });
 

@@ -3,10 +3,14 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ListView
+
+
+    <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/listviewPurchaseItems"/>
+        android:layout_height="200dp"
+        android:id="@+id/recyclerviewPurchaseDetails"
+        android:layout_marginTop="10dp"/>
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -22,18 +26,14 @@
             android:background="#67ab9f"/>
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/buttonClosePurchase"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Button" />
-
-        <Button
-            android:id="@+id/buttonSavePurchase"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/buttonSavePurchase"
+            android:text="@string/buttonClosePurchase"
             android:background="#67ab9f"
-            android:layout_marginTop="2dp"/>
+            android:layout_marginTop="2dp" />
+
+
 
     </LinearLayout>
 

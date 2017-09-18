@@ -56,7 +56,7 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.MyViewHolder
         holder.imageViewDeleteUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d("Test",users.getUsername());
+                Log.d("Test","Delete Icon " + users.getUsername());
 
             }
         });

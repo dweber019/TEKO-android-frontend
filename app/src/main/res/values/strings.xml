@@ -25,4 +25,6 @@
     <string name="buttonAddItemSave">Save Items</string>
     <string name="itemAmount">Amount</string>
     <string name="itemDescription">Description</string>
+    <string name="buttonClosePurchase">Close Purchase</string>
+    <string name="closePurchaseCost">What did the Purchase cost?</string>
 </resources>

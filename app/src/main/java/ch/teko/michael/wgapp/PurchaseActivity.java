@@ -44,9 +44,8 @@ public class PurchaseActivity extends AppCompatActivity {
 
         purchaseList = new ArrayList<>();
 
-        purchaseList.add(new Purchase("Test"));
-        purchaseList.add(new Purchase("Test2"));
-        purchaseList.add(new Purchase("Test2222222222"));
+        purchaseList.add(new Purchase("09.09.2017"));
+
 
 
         recyclerView = (RecyclerView) findViewById(R.id.recyclerviewPurchases);
