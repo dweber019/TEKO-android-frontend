@@ -40,6 +40,10 @@ public class RequestHelper {
         RequestHelper.request(context, uri, json, operator, Request.Method.POST, true);
     }
 
+    public static void postAll(Context context, String uri, JSONObject json, JsonArrayOperator operator) {
+        RequestHelper.requestAll(context, uri, null, operator, Request.Method.POST, true);
+    }
+
     public static void put(Context context, String uri, JSONObject json, JsonObjectOperator operator) {
         RequestHelper.request(context, uri, json, operator, Request.Method.PUT, true);
     }

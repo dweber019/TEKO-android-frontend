@@ -48,7 +48,6 @@ public class StatementofcostsAdapter extends RecyclerView.Adapter<Statementofcos
         this.settleList = settleList;
         this.context = context;
         this.ownsYou = ownsYou;
-        this.reloadData();
     }
 
     public void reloadData() {
