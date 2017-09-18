@@ -5,6 +5,7 @@ package ch.teko.michael.wgapp;
  */
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -88,6 +89,10 @@ public class PurchaseAdapter extends RecyclerView.Adapter<PurchaseAdapter.MyView
             @Override
             public void onClick(View view) {
                 Log.d("Test","Item " + items.id);
+
+                Intent i = new Intent(context, PurchaseDetailActivity.class);
+                i.putExtra("ID", items.id);
+                context.startActivity(i);
             }
         });
 

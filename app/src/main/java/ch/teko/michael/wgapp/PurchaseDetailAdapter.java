@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import ch.teko.michael.wgapp.api.RequestHelper;
 import ch.teko.michael.wgapp.model.PurchaseItem;
 
 public class PurchaseDetailAdapter extends RecyclerView.Adapter<PurchaseDetailAdapter.MyViewHolder> {
@@ -22,6 +23,8 @@ public class PurchaseDetailAdapter extends RecyclerView.Adapter<PurchaseDetailAd
 
     private ImageView imageViewPurchaseDelete;
     private List<PurchaseItem> purchaseItemList;
+    private Context context;
+    private Integer purchaseId;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView textViewPurchaseItem;
@@ -31,16 +34,28 @@ public class PurchaseDetailAdapter extends RecyclerView.Adapter<PurchaseDetailAd
             super(view);
             textViewPurchaseItem = (TextView) view.findViewById(R.id.textviewPurchaseDetailSingleRow);
             imageViewDeletePurchaseItem = (ImageView) view.findViewById(R.id.imageViewPurchaseDetailSingleRowDelete);
-
-
-
-
         }
     }
 
 
-    public PurchaseDetailAdapter(List<PurchaseItem> purchaseItemList) {
+    public PurchaseDetailAdapter(List<PurchaseItem> purchaseItemList, Context context, Integer purchaseId) {
         this.purchaseItemList = purchaseItemList;
+        this.context = context;
+        this.purchaseId = purchaseId;
+    }
+
+    public void reloadData() {
+        // Get all slips
+        RequestHelper.getAll(context, "/slips/" + purchaseId + "/items", (jsonArray -> {
+            Log.i("slips", jsonArray.toString());
+
+            this.swapData(PurchaseItem.fromArray(jsonArray));
+        }));
+    }
+
+    public void swapData(List<PurchaseItem> purchaseList) {
+        this.purchaseItemList = purchaseList;
+        notifyDataSetChanged();
     }
 
     @Override
@@ -51,16 +66,20 @@ public class PurchaseDetailAdapter extends RecyclerView.Adapter<PurchaseDetailAd
         return new MyViewHolder(itemView);
     }
 
-    Context context;
-
     @Override
     public void onBindViewHolder(MyViewHolder holder, final int position) {
         final PurchaseItem items = purchaseItemList.get(position);
-        holder.textViewPurchaseItem.setText(items.getItemName());
+        holder.textViewPurchaseItem.setText(items.name);
         holder.imageViewDeletePurchaseItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d("Test","Delete Button "+ items.getItemName());
+                Log.d("Test","Delete Button "+ items.name);
+
+                RequestHelper.delete(context, "/slips/" + purchaseId + "/items/" + items.id, (jsonArray -> {
+                    Log.i("slips-items", jsonArray.toString());
+
+                    reloadData();
+                }));
 
             }
         });
@@ -68,7 +87,7 @@ public class PurchaseDetailAdapter extends RecyclerView.Adapter<PurchaseDetailAd
         holder.textViewPurchaseItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d("Test","Item " + items.getItemName());
+                Log.d("Test","Item " + items.name);
             }
         });
 
