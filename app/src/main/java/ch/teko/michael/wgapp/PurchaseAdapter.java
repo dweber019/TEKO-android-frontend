@@ -46,6 +46,11 @@ public class PurchaseAdapter extends RecyclerView.Adapter<PurchaseAdapter.MyView
         this.purchaseList = purchaseList;
     }
 
+    public void swapData(List<Purchase> purchaseList) {
+        this.purchaseList = purchaseList;
+        notifyDataSetChanged();
+    }
+
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())

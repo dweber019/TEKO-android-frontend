@@ -41,15 +41,6 @@ public class PurchaseActivity extends AppCompatActivity {
 
         purchaseList = new ArrayList<>();
 
-        purchaseList.add(new Purchase("09.09.2017"));
-
-
-        // Get all slips
-        RequestHelper.getAll(context, "/slips", (jsonArray -> {
-            Log.i("slips", jsonArray.toString());
-        }));
-
-
         recyclerView = (RecyclerView) findViewById(R.id.recyclerviewPurchases);
 
         purchaseAdapter = new PurchaseAdapter(purchaseList);
@@ -58,6 +49,12 @@ public class PurchaseActivity extends AppCompatActivity {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(purchaseAdapter);
 
+        // Get all slips
+        RequestHelper.getAll(context, "/slips", (jsonArray -> {
+            Log.i("slips", jsonArray.toString());
+
+            purchaseAdapter.swapData(Purchase.fromArray(jsonArray));
+        }));
 
 
         addPurchase = (Button) findViewById(R.id.buttonAddPurchase);
