@@ -14,7 +14,7 @@
         />
 
     <EditText
-        android:id="@+id/editTextUsername"
+        android:id="@+id/editTextMail"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:hint="@string/loginUsername"
@@ -52,7 +52,7 @@
         android:gravity="bottom">
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/buttonAddEditUser"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#67ab9f"

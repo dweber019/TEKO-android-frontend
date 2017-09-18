@@ -5,6 +5,7 @@ package ch.teko.michael.wgapp;
  */
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -65,10 +66,17 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.MyViewHolder
         holder.textViewUsername.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d("Test",users.email);
+
+                Intent i = new Intent(context, UsersActivity.class);
+                i.putExtra("userMail", users.email );
+                i.putExtra("userID", users.id);
+                context.startActivity(i);
+
+
+
+
             }
         });
-
 
     }
 

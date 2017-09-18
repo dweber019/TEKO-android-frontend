@@ -30,6 +30,7 @@ public class UsersActivity extends AppCompatActivity{
     private Button addUserButton;
     private RecyclerView recyclerView;
     private UsersAdapter usersAdapter;
+    private String activityModeUser;
 
 
     @Override
@@ -61,12 +62,14 @@ public class UsersActivity extends AppCompatActivity{
 
 
 
-
         addUserButton.setOnClickListener(
                 new View.OnClickListener(){
                     public void onClick(View v) {
 
+                        activityModeUser = "add";
+
                         Intent i = new Intent(getBaseContext(), EditUserActivity.class);
+                        i.putExtra("activityModeAddEditUser", activityModeUser);
                         startActivity(i);
 
                     }

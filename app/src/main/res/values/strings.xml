@@ -9,14 +9,14 @@
     <string name="buttonPurchase">Purchase</string>
     <string name="buttonStatementOfCosts">statement of costs</string>
     <string name="buttonUsers">Users</string>
-    <string name="buttonLogout">Abmelden</string>
+    <string name="buttonLogout">Logout</string>
     <string name="titleMenueBar">Menü</string>
     <string name="buttonAddPurchase">Add Purchase</string>
     <string name="titlePurchases">Purchases</string>
     <string name="buttonAddUser">Add user</string>
     <string name="titleUsers">Users</string>
     <string name="textYouOwePerson">You owe the following person money:</string>
-    <string name="textPersonOwesYou">The following person owe you money:</string>
+    <string name="textPersonOwesYou">The following person owe you moneay:</string>
     <string name="buttonEditUser">Add User</string>
     <string name="textViewEditUserPassword">Please enter a password for the user</string>
     <string name="loginPasswordConfirm">Confirm Password</string>
