@@ -28,4 +28,5 @@
     <string name="buttonClosePurchase">Close Purchase</string>
     <string name="closePurchaseCost">What did the Purchase cost?</string>
     <string name="selectItemDescription">Please select Item</string>
+    <string name="buttonRecalculateSettkes">Recalculate</string>
 </resources>
