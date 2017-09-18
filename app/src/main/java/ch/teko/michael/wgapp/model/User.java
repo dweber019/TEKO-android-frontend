@@ -6,25 +6,23 @@ package ch.teko.michael.wgapp.model;
 
 public class User {
 
-    private String username;
-    private String password;
-    private String email;
 
-    public User(String username, String password, String email) {
-        this.username = username;
-        this.password = password;
+    public String password;
+    public String email;
+    public Integer id;
+    public String name;
+    public String createAt;
+    public String updatedAt;
+
+    public User(String email, int id, String name) {
+
+
         this.email = email;
+        this.id = id;
+        this.name = name;
     }
 
-    public String getUsername() {
-        return username;
-    }
 
-    public String getPassword() {
-        return password;
-    }
 
-    public String getEmail() {
-        return email;
-    }
 }
+
