@@ -52,11 +52,11 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.MyViewHolder
     @Override
     public void onBindViewHolder(MyViewHolder holder, final int position) {
         final User users = userList.get(position);
-        holder.textViewUsername.setText(users.getUsername());
+        holder.textViewUsername.setText(users.email);
         holder.imageViewDeleteUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d("Test","Delete Icon " + users.getUsername());
+                Log.d("Test","Delete Icon " + users.email);
 
             }
         });
@@ -64,7 +64,7 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.MyViewHolder
         holder.textViewUsername.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d("Test",users.getUsername());
+                Log.d("Test",users.email);
             }
         });
 

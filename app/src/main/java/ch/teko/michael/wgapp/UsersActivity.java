@@ -1,5 +1,6 @@
 package ch.teko.michael.wgapp;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -7,12 +8,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import ch.teko.michael.wgapp.api.RequestHelper;
 import ch.teko.michael.wgapp.model.Purchase;
 import ch.teko.michael.wgapp.model.User;
 
@@ -28,6 +31,7 @@ public class UsersActivity extends AppCompatActivity{
     private RecyclerView recyclerView;
     private UsersAdapter usersAdapter;
 
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,12 +41,18 @@ public class UsersActivity extends AppCompatActivity{
 
         addUserButton = (Button) findViewById(R.id.buttonAddUser);
 
+        final Context context = getApplicationContext();
+
+        // Get all Users
+        RequestHelper.getAll(context, "/users", (jsonArray -> {
+            Log.i("users", jsonArray.toString());
+        }));
 
 
-       userList = new ArrayList<>();
 
-       userList.add(new User("David","",""));
-       userList.add(new User("Michael","",""));
+
+        userList = new ArrayList<>();
+        userList.add(new User("michael.faller@ch.dsv.com",0,"Michael Faller"));
 
 
 
