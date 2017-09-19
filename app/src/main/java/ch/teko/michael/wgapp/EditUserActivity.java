@@ -105,44 +105,7 @@ public class EditUserActivity extends AppCompatActivity {
                     new View.OnClickListener() {
                         public void onClick(View v) {
 
-                            if (! editTextName.getText().toString().equals("")) {
-                                if (editTextMail.getText().toString().contains("@") && editTextMail.getText().toString().contains(".")) {
-                                    if (editTextPassword.getText().toString().equals(editTextPasswordConfirm.getText().toString())) {
-                                        if (editTextPassword.getText().toString().length() >= 8) {
-
-                                            try {
-                                                JSONObject jsonBody = new JSONObject();
-                                                jsonBody.put("name", editTextName.getText().toString());
-                                                jsonBody.put("email", editTextMail.getText().toString());
-                                                jsonBody.put("password", editTextPassword.getText().toString());
-
-                                                RequestHelper.post(context,"/users", jsonBody, (JSONObject jsonObject) ->  {
-                                                    Log.i("json", jsonObject.toString());
-                                                    finish();
-                                                });
-                                            } catch (JSONException e) {
-                                                e.getStackTrace();
-
-                                            }
-
-                                        } else {
-                                            Toast.makeText(context, "Password is too short. Minimum lentgh 8 characters", Toast.LENGTH_SHORT).show();
-                                        }
-
-                                    } else {
-                                        Toast.makeText(context, "Password not equal", Toast.LENGTH_SHORT).show();
-                                    }
-
-                                } else {
-                                    Toast.makeText(context, "No valid E-Mail adress", Toast.LENGTH_SHORT).show();
-                                }
-
-                            } else {
-                                Toast.makeText(context, "No valid Name", Toast.LENGTH_SHORT).show();
-                            }
-
-                        }
-                    });
+                            
 
 
 
