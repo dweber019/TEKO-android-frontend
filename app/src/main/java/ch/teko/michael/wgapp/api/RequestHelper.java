@@ -2,6 +2,7 @@ package ch.teko.michael.wgapp.api;
 
 import android.content.Context;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -72,6 +73,7 @@ public class RequestHelper {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.e("VOLLEY", error.toString());
+                Toast.makeText(context, error.getMessage(), Toast.LENGTH_LONG).show();
             }
         }) {
             @Override
@@ -114,6 +116,7 @@ public class RequestHelper {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.e("VOLLEY", error.toString());
+                Toast.makeText(context, error.getMessage(), Toast.LENGTH_LONG).show();
             }
         }) {
             @Override

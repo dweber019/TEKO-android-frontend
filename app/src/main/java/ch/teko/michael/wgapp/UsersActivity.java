@@ -30,8 +30,7 @@ public class UsersActivity extends AppCompatActivity{
     private Button addUserButton;
     private RecyclerView recyclerView;
     private UsersAdapter usersAdapter;
-    private String activityModeUser;
-
+    private Context context;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -42,7 +41,7 @@ public class UsersActivity extends AppCompatActivity{
 
         addUserButton = (Button) findViewById(R.id.buttonAddUser);
 
-        final Context context = getApplicationContext();
+        context = getApplicationContext();
 
         userList = new ArrayList<>();
 
@@ -53,6 +52,20 @@ public class UsersActivity extends AppCompatActivity{
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(usersAdapter);
 
+        addUserButton.setOnClickListener(
+                new View.OnClickListener(){
+                    public void onClick(View v) {
+                        Intent i = new Intent(getBaseContext(), EditUserActivity.class);
+                        i.putExtra("activityModeAddEditUser", "add");
+                        startActivity(i);
+
+                    }
+                }
+        );
+    }
+
+    @Override
+    protected void onResume() {
         //Get users
         RequestHelper.getAll(context, "/users", (jsonArray -> {
             Log.i("users", jsonArray.toString());
@@ -60,27 +73,6 @@ public class UsersActivity extends AppCompatActivity{
             usersAdapter.swapData(User.fromArray(jsonArray));
         }));
 
-
-
-        addUserButton.setOnClickListener(
-                new View.OnClickListener(){
-                    public void onClick(View v) {
-
-                        activityModeUser = "add";
-
-                        Intent i = new Intent(getBaseContext(), EditUserActivity.class);
-                        i.putExtra("activityModeAddEditUser", activityModeUser);
-                        startActivity(i);
-
-                    }
-                }
-        );
-
-
-
-
-
-
-
+        super.onResume();
     }
 }

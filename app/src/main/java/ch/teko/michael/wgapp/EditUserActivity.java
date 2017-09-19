@@ -8,10 +8,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import ch.teko.michael.wgapp.api.RequestHelper;
 
@@ -28,21 +30,24 @@ public class EditUserActivity extends AppCompatActivity {
     EditText editTextPassword;
     EditText editTextPasswordConfirm;
     Context context;
-    
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edituser);
+
         String activityMode = getIntent().getStringExtra("activityModeAddEditUser");
-        String editUserMail = getIntent().getStringExtra("userMail");
+
         String editUserID = getIntent().getStringExtra("userID");
+        String editUserEmail = getIntent().getStringExtra("userEmail");
+        String editUserName = getIntent().getStringExtra("userName");
 
         this.context = getApplicationContext();
 
         editTextName = (EditText) findViewById(R.id.editTextUserName);
         editTextPassword = (EditText) findViewById(R.id.editTextPassword);
-        editTextPasswordConfirm = (EditText) findViewById(R.id.editTextPasswordConfirm); 
+        editTextPasswordConfirm = (EditText) findViewById(R.id.editTextPasswordConfirm);
         buttonAddEditButton = (Button) findViewById(R.id.buttonAddEditUser);
         editTextMail = (EditText) findViewById(R.id.editTextMail);
 
@@ -54,7 +59,7 @@ public class EditUserActivity extends AppCompatActivity {
                     new View.OnClickListener() {
                         public void onClick(View v) {
 
-                            if (! editTextName.getText().toString().equals("")) {
+                            if (!editTextName.getText().toString().equals("")) {
                                 if (editTextMail.getText().toString().contains("@") && editTextMail.getText().toString().contains(".")) {
                                     if (editTextPassword.getText().toString().equals(editTextPasswordConfirm.getText().toString())) {
                                         if (editTextPassword.getText().toString().length() >= 8) {
@@ -65,7 +70,7 @@ public class EditUserActivity extends AppCompatActivity {
                                                 jsonBody.put("email", editTextMail.getText().toString());
                                                 jsonBody.put("password", editTextPassword.getText().toString());
 
-                                                RequestHelper.post(context,"/users", jsonBody, (JSONObject jsonObject) ->  {
+                                                RequestHelper.post(context, "/users", jsonBody, (JSONObject jsonObject) -> {
                                                     Log.i("json", jsonObject.toString());
                                                     finish();
                                                 });
@@ -98,18 +103,43 @@ public class EditUserActivity extends AppCompatActivity {
 
 
             buttonAddEditButton.setText("Edit User");
-            editTextMail.setText(editUserMail);
+            editTextMail.setText(editUserEmail);
             editTextMail.setEnabled(false);
+            editTextName.setText(editUserName);
+
 
             buttonAddEditButton.setOnClickListener(
                     new View.OnClickListener() {
                         public void onClick(View v) {
 
+                            if (!editTextName.getText().toString().equals("")) {
+                                if (editTextPassword.getText().toString().equals(editTextPasswordConfirm.getText().toString())) {
+                                    if (editTextPassword.getText().toString().length() >= 8) {
 
+                                        try {
+                                            JSONObject jsonBody = new JSONObject();
+                                            jsonBody.put("name", editTextName.getText().toString());
+                                            jsonBody.put("password", editTextPassword.getText().toString());
 
+                                            RequestHelper.put(context, "/users/" + editUserID, jsonBody, (JSONObject jsonObject) -> {
+                                                Log.i("user", jsonObject.toString());
+                                                finish();
+                                            });
+                                        } catch (JSONException e) {
+                                            e.getStackTrace();
 
+                                        }
 
+                                    } else {
+                                        Toast.makeText(context, "Password is too short. Minimum lentgh 8 characters", Toast.LENGTH_SHORT).show();
+                                    }
 
+                                } else {
+                                    Toast.makeText(context, "Password not equal", Toast.LENGTH_SHORT).show();
+                                }
+                            } else {
+                                Toast.makeText(context, "No valid Name", Toast.LENGTH_SHORT).show();
+                            }
 
                         }
                     }
@@ -117,7 +147,8 @@ public class EditUserActivity extends AppCompatActivity {
         }
 
 
-    }}
+    }
+}
 
 
 

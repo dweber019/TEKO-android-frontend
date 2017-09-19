@@ -64,7 +64,7 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.MyViewHolder
     public void onBindViewHolder(MyViewHolder holder, final int position) {
 
         final User users = userList.get(position);
-        holder.textViewUsername.setText(users.email);
+        holder.textViewUsername.setText(users.name);
         holder.imageViewDeleteUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -72,6 +72,7 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.MyViewHolder
                 RequestHelper.delete(context, "/users/" + users.id, (jsonArray -> {
                     Log.i("users", jsonArray.toString());
 
+                    reloadData();
                 }));
 
 
@@ -84,9 +85,10 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.MyViewHolder
             public void onClick(View view) {
                 Log.i("user", users.toString());
                 Intent i = new Intent(context, EditUserActivity.class);
-                i.putExtra("activityModeAddEditUser","edit");
-                i.putExtra("userMail", users.email );
-                i.putExtra("userID", users.id);
+                i.putExtra("activityModeAddEditUser", "edit");
+                i.putExtra("userID", users.id.toString());
+                i.putExtra("userEmail", users.email);
+                i.putExtra("userName", users.name);
                 context.startActivity(i);
             }
         });
