@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">WG-APP</string>
     <string name="appName">WG-APP</string>
-    <string name="loginUsername">Email</string>
+    <string name="loginEmail">Email</string>
     <string name="loginPassword">Password</string>
     <string name="buttonLogin">Login</string>
     <string name="buttonCancel">Cancel</string>
@@ -30,4 +30,6 @@
     <string name="closePurchaseCost">What did the Purchase cost?</string>
     <string name="selectItemDescription">Please select Item</string>
     <string name="buttonRecalculateSettkes">Recalculate</string>
+    <string name="textViewUserName">Please enter your Name:</string>
+    <string name="editTextUserName">Name</string>
 </resources>

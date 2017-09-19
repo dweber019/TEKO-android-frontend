@@ -23,6 +23,7 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.MyViewHolder
 
 
     private List<User> userList;
+    private Context context;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView textViewUsername;
@@ -32,13 +33,12 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.MyViewHolder
             super(view);
             textViewUsername = (TextView) view.findViewById(R.id.textviewUsernameSingleRow);
             imageViewDeleteUser = (ImageView) view.findViewById(R.id.imageViewUserSingleRowDelete);
-
-
         }
     }
 
-    public UsersAdapter(List<User> userList) {
+    public UsersAdapter(List<User> userList, Context context) {
         this.userList = userList;
+        this.context = context;
     }
 
     @Override
@@ -48,8 +48,6 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.MyViewHolder
 
         return new MyViewHolder(itemView);
     }
-
-    Context context;
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, final int position) {
@@ -66,15 +64,12 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.MyViewHolder
         holder.textViewUsername.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                Intent i = new Intent(context, UsersActivity.class);
+                Log.i("user", users.toString());
+                Intent i = new Intent(context, EditUserActivity.class);
+                i.putExtra("activityModeAddEditUser","edit");
                 i.putExtra("userMail", users.email );
                 i.putExtra("userID", users.id);
                 context.startActivity(i);
-
-
-
-
             }
         });
 
