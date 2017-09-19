@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import ch.teko.michael.wgapp.api.RequestHelper;
 import ch.teko.michael.wgapp.model.Purchase;
 import ch.teko.michael.wgapp.model.User;
 
@@ -49,14 +50,31 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.MyViewHolder
         return new MyViewHolder(itemView);
     }
 
+
+    public void reloadData() {
+        // Get all slips
+        RequestHelper.getAll(context, "/users", (jsonArray -> {
+            Log.i("users", jsonArray.toString());
+
+            this.swapData(User.fromArray(jsonArray));
+        }));
+    }
+
     @Override
     public void onBindViewHolder(MyViewHolder holder, final int position) {
+
         final User users = userList.get(position);
         holder.textViewUsername.setText(users.email);
         holder.imageViewDeleteUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d("Test","Delete Icon " + users.email);
+
+                RequestHelper.delete(context, "/users/" + users.id, (jsonArray -> {
+                    Log.i("users", jsonArray.toString());
+
+                }));
+
+
 
             }
         });
