@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -58,6 +59,9 @@ public class LoginActivity extends AppCompatActivity {
                         email = edittextEmail.getText().toString().trim();
                         password = edittextPassword.getText().toString().trim();
 
+                        if (email.length() > 0 ){
+                            if ( password.length()>0 ){
+
                         Log.i("Login:", "Email: " + email + ", Password: " + password);
 
                         try {
@@ -79,6 +83,15 @@ public class LoginActivity extends AppCompatActivity {
                             e.getStackTrace();
                         }
 
+
+                        }else{
+
+                            Toast.makeText(context, "Password is empty", Toast.LENGTH_SHORT).show();
+                        }
+                    }else{
+
+                            Toast.makeText(context, "Username is empty", Toast.LENGTH_SHORT).show();
+                    }
                     }
                 }
         );
